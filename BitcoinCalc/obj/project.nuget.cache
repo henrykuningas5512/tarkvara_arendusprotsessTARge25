@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "3Fz5Uvxivso=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\opilane\\source\\repos\\tarkvara_arendusprotsessTARge25\\BitcoinCalc\\BitcoinCalc.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\opilane\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}
