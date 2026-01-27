@@ -1,0 +1,62 @@
+<h1>ERD diagrammid</h1>
+
+<h2>Mis on ERD?</h2>
+<p>
+    ERD (Entity Relationship Diagram) ehk olemidiagramm on UML diagramm,
+    mida kasutatakse andmebaasi struktuuri kujutamiseks. See näitab olemeid,
+    nende atribuute ja omavahelisi seoseid.
+</p>
+
+<h2>Kus ERD diagramme kasutatakse?</h2>
+<p>
+    ERD diagramme kasutatakse andmebaaside planeerimisel ja dokumenteerimisel,
+    enne SQL tabelite loomist ning arendajate ja analüütikute vahelise
+    ühise arusaama loomiseks.
+</p>
+
+<h2>Olemite vahelised seosed</h2>
+<ul>
+    <li><strong>1 : 1</strong> – üks kirje on seotud ühe kirjega</li>
+    <li><strong>1 : N</strong> – üks kirje on seotud mitme kirjega</li>
+    <li><strong>M : N</strong> – mitu kirjet mitmega (kasutatakse vahetabelit)</li>
+</ul>
+
+<h3>Seoste otsade tähendused</h3>
+<ul>
+    <li><strong>|</strong> – täpselt üks</li>
+    <li><strong>O</strong> – seos ei ole kohustuslik</li>
+    <li><strong>&lt;</strong> – mitu</li>
+</ul>
+
+<h2>Olemid ja atribuudid</h2>
+<p>
+    Olem (Entity) kujutab andmebaasi tabelit. Olem sisaldab nime,
+    atribuute (välju) ja vähemalt ühte võtit.
+</p>
+
+<h2>Võtmed (Keys)</h2>
+<ul>
+    <li>
+        <strong>Primary Key (PK)</strong> – unikaalne tunnus iga kirje jaoks,
+        ei tohi korduda ega olla tühi
+    </li>
+    <li>
+        <strong>Foreign Key (FK)</strong> – viitab teise tabeli Primary Keyle
+        ja loob seose tabelite vahel
+    </li>
+    <li>
+        <strong>Composite Key</strong> – koosneb mitmest väljast, mis koos
+        moodustavad unikaalse võtme
+    </li>
+    <li>
+        <strong>Key</strong> – üldnimetus väljadele, mida kasutatakse
+        kirjete leidmiseks või sidumiseks
+    </li>
+</ul>
+
+<h2>Võtmete kasutamine ERD-s</h2>
+<p>
+    Primary Key identifitseerib tabeli kirjed ning Foreign Key seob tabelid
+    omavahel. Composite Keyt kasutatakse sageli vahetabelites mitme
+    olemi ühendamiseks.
+</p>
