@@ -1,79 +1,647 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="et">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minu Tarkvara Arendusprotsessi Ainemapp</title>
-</head>
-<body>
-    <h1>Tarkvara Arendusprotsessi tunni raames koostatud ainemapp</h1>
-    <br/>
-    <p>
-        Tarkvara Arendusprotsessi ainses tehtud ainemapp kus on selle aine ja kõikide teiste ainete ülesanded ja muud saavutused kuvatud.
-    </p>
-    <h2>Tarkvara Arendusprotses</h2>
-    <a href="./SDLC/sdlc.html" >Üldiselt - mis see on </a><br>
-    <a href="./CASE/">CASE-vahendid</a><br/>
-    <a href="./DOCS/index.html">Dokumentatsioon</a><br>
-    <a href="./UML/index.html">UML</a>
-    <h3>Praktiline rakendus</h3>
-    <a href="./BTC/index.html">Bitcoin Calculator.</a>
-    <a href="./PNC/index.html">Tooted ja kategooriad</a>
-    <br>
-    <h2>IT organisatsiooni juhtimine ja taristu</h2>
-    <a href="IT_organisatsiooni_juhtimine_ja_taristu.html" >Mis seal õppisin</a><br>
-    ---------------------------------------
-    <h2>Kes ma olen:</h2>
-    <table>
-        <tr>
-            <td>Minu nimi</td>
-            <td>Mida ma teen:</td>
-            <td>Kust ma tulen:</td>
-            <td>Pilt</td>
-        </tr>
-        <tr>
-            <td>Henry Kuningas</td>
-            <td>Olen töötu</td>
-            <td>Tulen Tallinast</td>
-            <td><img height="250" src="./Pildid/Minupilt.png"/></td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <a href="https://github.com/henrykuningas5512">Minu githubi link</a>
-            </td>
-        </tr>
-    </table>
-    <style>
-    body {
-        background-color: #e8f5e9; /* heleroheline */
-        font-family: Arial, sans-serif;
-        padding: 20px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minu Tarkvara Arendusprotsessi Ainemapp</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
     }
 
-    h1, h2, h3 {
-        color: #2e7d32;
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.35), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(14, 165, 233, 0.25), transparent 35%),
+        linear-gradient(135deg, #020617, #0f172a, #1e3a8a);
+      color: #f8fafc;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 45px 45px;
+      pointer-events: none;
+      z-index: -1;
     }
 
     a {
-        color: #1b5e20;
-        text-decoration: none;
+      color: #93c5fd;
+      text-decoration: none;
+      font-weight: bold;
     }
 
     a:hover {
-        text-decoration: underline;
+      color: #38bdf8;
+      text-decoration: underline;
+    }
+
+    header {
+      padding: 80px 25px 60px;
+      text-align: center;
+      background: rgba(2, 6, 23, 0.6);
+      border-bottom: 1px solid rgba(147, 197, 253, 0.25);
+      backdrop-filter: blur(10px);
+    }
+
+    header h1 {
+      font-size: clamp(32px, 6vw, 62px);
+      margin: 0;
+      color: #dbeafe;
+      text-shadow: 0 0 25px rgba(96, 165, 250, 0.8);
+    }
+
+    header p {
+      max-width: 750px;
+      margin: 20px auto 0;
+      color: #cbd5e1;
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    .menu-btn {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      z-index: 5;
+      border: 1px solid rgba(147, 197, 253, 0.4);
+      background: linear-gradient(135deg, #2563eb, #0ea5e9);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: "Comic Sans MS", cursive;
+      font-size: 16px;
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.45);
+      transition: 0.25s;
+    }
+
+    .menu-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 35px rgba(14, 165, 233, 0.65);
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      background: rgba(2, 6, 23, 0.96);
+      overflow-x: hidden;
+      transition: 0.4s;
+      padding-top: 75px;
+      box-shadow: 12px 0 35px rgba(0, 0, 0, 0.5);
+      border-right: 1px solid rgba(147, 197, 253, 0.3);
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 16px 28px;
+      color: #dbeafe;
+      font-size: 18px;
+      transition: 0.25s;
+      white-space: nowrap;
+    }
+
+    .sidebar a:hover {
+      background: rgba(37, 99, 235, 0.25);
+      color: #38bdf8;
+      text-decoration: none;
+      padding-left: 38px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 18px;
+      right: 25px;
+      font-size: 36px;
+      color: white;
+      cursor: pointer;
+    }
+
+    main {
+      max-width: 1150px;
+      margin: auto;
+      padding: 35px 20px;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(147, 197, 253, 0.25);
+      border-radius: 24px;
+      padding: 28px;
+      margin: 28px 0;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+      transition: 0.3s;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.65);
+      box-shadow: 0 22px 55px rgba(14, 165, 233, 0.18);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      color: #bfdbfe;
+      font-size: 30px;
+      margin-top: 0;
+    }
+
+    h3 {
+      color: #93c5fd;
+    }
+
+    p {
+      color: #dbeafe;
+      line-height: 1.7;
+      font-size: 18px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+      justify-content: center;
+    }
+
+    .badge {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.25);
+      color: #dbeafe;
+      border: 1px solid rgba(147, 197, 253, 0.35);
+      box-shadow: inset 0 0 15px rgba(59, 130, 246, 0.15);
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .link-box {
+      min-height: 120px;
+      padding: 22px;
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(30, 64, 175, 0.55), rgba(14, 165, 233, 0.18));
+      border: 1px solid rgba(147, 197, 253, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-box::before {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: rgba(56, 189, 248, 0.18);
+      border-radius: 50%;
+      top: -50px;
+      right: -50px;
+      transition: 0.3s;
+    }
+
+    .link-box:hover {
+      transform: translateY(-5px) scale(1.02);
+      background:
+        linear-gradient(135deg, rgba(37, 99, 235, 0.75), rgba(14, 165, 233, 0.35));
+      box-shadow: 0 15px 35px rgba(14, 165, 233, 0.18);
+    }
+
+    .link-box:hover::before {
+      transform: scale(1.6);
+    }
+
+    .link-box a {
+      position: relative;
+      z-index: 1;
+      color: #f8fafc;
+      font-size: 19px;
+    }
+
+    .slider {
+      background:
+        linear-gradient(135deg, rgba(37, 99, 235, 0.35), rgba(2, 132, 199, 0.16));
+      border: 1px solid rgba(147, 197, 253, 0.35);
+      border-radius: 22px;
+      padding: 30px;
+      text-align: center;
+      min-height: 180px;
+      box-shadow: inset 0 0 25px rgba(14, 165, 233, 0.12);
+    }
+
+    .slide {
+      display: none;
+      font-size: 23px;
+      color: #e0f2fe;
+      line-height: 1.6;
+      animation: fade 0.4s ease;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .slider-buttons {
+      margin-top: 25px;
+    }
+
+    .slider button,
+    .top-button {
+      margin: 8px;
+      padding: 11px 18px;
+      border: none;
+      background: linear-gradient(135deg, #2563eb, #0ea5e9);
+      color: white;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: "Comic Sans MS", cursive;
+      font-size: 16px;
+      transition: 0.25s;
+      box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35);
+    }
+
+    .slider button:hover,
+    .top-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(14, 165, 233, 0.55);
     }
 
     table {
-        background-color: #ffffff;
-        border-collapse: collapse;
-        margin-top: 20px;
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(147, 197, 253, 0.25);
     }
 
     td {
-        border: 1px solid #c8e6c9;
-        padding: 10px;
+      border: 1px solid rgba(147, 197, 253, 0.2);
+      padding: 15px;
+      text-align: center;
+      color: #dbeafe;
     }
-</style>
+
+    tr:first-child td {
+      background: rgba(37, 99, 235, 0.4);
+      color: white;
+      font-weight: bold;
+    }
+
+    img {
+      border-radius: 20px;
+      border: 4px solid rgba(96, 165, 250, 0.8);
+      box-shadow: 0 0 30px rgba(96, 165, 250, 0.35);
+      max-width: 100%;
+    }
+
+    .profile-area {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .profile-box {
+      background: rgba(30, 41, 59, 0.65);
+      padding: 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(147, 197, 253, 0.25);
+    }
+
+    .github-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 13px 20px;
+      background: linear-gradient(135deg, #1d4ed8, #0284c7);
+      color: white;
+      border-radius: 999px;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+    }
+
+    .github-button:hover {
+      color: white;
+      text-decoration: none;
+      transform: scale(1.04);
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px;
+      margin-top: 40px;
+      background: rgba(2, 6, 23, 0.85);
+      border-top: 1px solid rgba(147, 197, 253, 0.25);
+      color: #cbd5e1;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        padding-top: 95px;
+      }
+
+      .profile-area {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        font-size: 14px;
+      }
+
+      td {
+        padding: 8px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="menu-btn" onclick="openSidebar()">☰ Menüü</button>
+
+  <div id="sidebar" class="sidebar">
+    <span class="close-btn" onclick="closeSidebar()">×</span>
+    <a href="#avaleht">Avaleht</a>
+    <a href="#arendusprotsess">Tarkvara arendusprotsess</a>
+    <a href="#rakendused">Praktilised rakendused</a>
+    <a href="#slider">Slaider</a>
+    <a href="#taristu">IT taristu</a>
+    <a href="#mina">Kes ma olen?</a>
+    <a href="https://github.com/henrykuningas5512">GitHub</a>
+  </div>
+
+  <header id="avaleht">
+    <h1>Tarkvara Arendusprotsessi Ainemapp</h1>
+    <p>
+      See on minu GitHub Pages pealeht, kuhu olen kokku kogunud oma koolitööd,
+      projektid ja tähtsamad ülesanded tarkvaraarenduse õpingutest.
+    </p>
+
+    <div class="badge-row">
+      <span class="badge">HTML</span>
+      <span class="badge">CSS</span>
+      <span class="badge">JavaScript</span>
+      <span class="badge">GitHub Pages</span>
+      <span class="badge">Tarkvaraarendus</span>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="card">
+      <h2>Mis see leht on?</h2>
+      <p>
+        See veebileht on koostatud Tarkvara Arendusprotsessi tunni raames.
+        Siit leiab minu õppematerjalid, praktilised tööd, projektid ja lingid
+        erinevatele alamlehtedele. Leht on ümber kujundatud tehisintellekti abiga,
+        kasutades tumesinist IT-stiilis kujundust.
+      </p>
+    </section>
+
+    <section class="card" id="arendusprotsess">
+      <h2>Tarkvara Arendusprotsess</h2>
+      <p>
+        Selles osas on teemad, mis on seotud tarkvara arendamise planeerimise,
+        dokumenteerimise ja protsessi kirjeldamisega.
+      </p>
+
+      <div class="link-grid">
+        <div class="link-box">
+          <a href="./SDLC/sdlc.html">SDLC - mis see on?</a>
+        </div>
+
+        <div class="link-box">
+          <a href="./CASE/">CASE-vahendid</a>
+        </div>
+
+        <div class="link-box">
+          <a href="./DOCS/index.html">Dokumentatsioon</a>
+        </div>
+
+        <div class="link-box">
+          <a href="./UML/index.html">UML diagrammid</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="rakendused">
+      <h2>Praktilised rakendused</h2>
+      <p>
+        Siin on minu praktilised veebirakendused, mis on tehtud õppimise käigus.
+      </p>
+
+      <div class="link-grid">
+        <div class="link-box">
+          <a href="./BTC/index.html">Bitcoin Calculator</a>
+        </div>
+
+        <div class="link-box">
+          <a href="./PNC/index.html">Tooted ja kategooriad</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="slider">
+      <h2>Interaktiivne slaider</h2>
+      <p>
+        See osa lisab lehele JavaScriptiga tehtud interaktiivsust.
+      </p>
+
+      <div class="slider">
+        <div class="slide active">
+          Õppisin, mis on tarkvara arendusprotsess ja miks seda kasutatakse.
+        </div>
+
+        <div class="slide">
+          Kasutasin GitHub Pages teenust, et oma veebileht internetti üles panna.
+        </div>
+
+        <div class="slide">
+          Harjutasin HTML, CSS ja JavaScripti kasutamist päris veebilehe loomisel.
+        </div>
+
+        <div class="slide">
+          Kujundasin pealehe ümber tehisintellekti abiga, et see näeks moodsam välja.
+        </div>
+
+        <div class="slider-buttons">
+          <button onclick="previousSlide()">← Eelmine</button>
+          <button onclick="nextSlide()">Järgmine →</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="taristu">
+      <h2>IT organisatsiooni juhtimine ja taristu</h2>
+      <p>
+        Selle aine all õppisin IT korraldust, taristut ja seda, kuidas tehnoloogiat
+        organisatsioonis kasutatakse.
+      </p>
+
+      <a class="github-button" href="IT_organisatsiooni_juhtimine_ja_taristu.html">
+        Vaata, mida ma selles aines õppisin
+      </a>
+    </section>
+
+    <section class="card" id="mina">
+      <h2>Kes ma olen?</h2>
+
+      <div class="profile-area">
+        <div class="profile-box">
+          <h3>Minu info</h3>
+          <p>
+            Minu nimi on <b>Henry Kuningas</b>. Ma õpin nooremaks tarkvaraarendajaks
+            ja tegelen koolis erinevate veebilehtede, rakenduste ja andmebaaside
+            projektidega.
+          </p>
+
+          <p>
+            See ainemapp näitab minu tehtud töid ja arengut tarkvaraarenduse õppimisel.
+          </p>
+
+          <a class="github-button" href="https://github.com/henrykuningas5512">
+            Ava minu GitHub
+          </a>
+        </div>
+
+        <div class="profile-box">
+          <table>
+            <tr>
+              <td>Nimi</td>
+              <td>Asukoht</td>
+            </tr>
+
+            <tr>
+              <td>Henry Kuningas</td>
+              <td>Tallinn</td>
+            </tr>
+
+            <tr>
+              <td colspan="2">
+                <img height="250" src="./Pildid/Minupilt.png" alt="Minu pilt" />
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Tehisintellekti kasutamine</h2>
+      <p>
+        Selle lehe kujundamisel kasutasin tehisintellekti abi. Tehisintellekt aitas
+        parandada kujundust, lisada tumesinise teema, Comic Sans fondi, külgmenüü,
+        slaideri, animatsioonid ja parema ülesehituse.
+      </p>
+
+      <button class="top-button" onclick="scrollToTop()">Tagasi üles ↑</button>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Leht on loodud GitHub Pages jaoks ja kujundatud tehisintellekti abiga.</p>
+  </footer>
+
+  <script>
+    function openSidebar() {
+      document.getElementById("sidebar").style.width = "280px";
+    }
+
+    function closeSidebar() {
+      document.getElementById("sidebar").style.width = "0";
+    }
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slide");
+
+    function showSlide(index) {
+      slides.forEach(function(slide) {
+        slide.classList.remove("active");
+      });
+
+      slides[index].classList.add("active");
+    }
+
+    function nextSlide() {
+      currentSlide++;
+
+      if (currentSlide >= slides.length) {
+        currentSlide = 0;
+      }
+
+      showSlide(currentSlide);
+    }
+
+    function previousSlide() {
+      currentSlide--;
+
+      if (currentSlide < 0) {
+        currentSlide = slides.length - 1;
+      }
+
+      showSlide(currentSlide);
+    }
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  </script>
 
 </body>
 </html>
